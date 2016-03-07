@@ -1,0 +1,41 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.entries #title{
+	background-color: red;
+	border: solid 3px;
+	width: 90%;
+	margin-top: 10px;
+	margin-left: 5%;
+}
+
+.entries #title:hover{
+   background-color: orange;
+   border: solid 3px;
+   width: 90%;
+   margin-top: 10px;
+   margin-left: 5%;
+	cursor: pointer;
+}
+
+.entries #body{
+   background-color: blue;
+   border: solid 3px;
+   min-width: 90%;
+	min-height: 20%;
+	max-width: 90%;
+	max-height: 20%;
+	margin-left: 5%;
+}
+
+
+#entradas-container{
+	max-width: 60%;
+	border: solid 3px;
+	margin: auto;
+	background-color: gray;
+}
+
