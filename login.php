@@ -41,7 +41,11 @@ session_start();
 		$reg = mysql_fetch_array($res) or die("Error al convertir en registros");
 		$_SESSION['correo'] = $correo;
 		$_SESSION['tipo'] = $reg['tipo'];
-		$_SESSION['id'] = $reg['id_usuario'];	
+		$_SESSION['id'] = $reg['id_usuario'];
+
+		if($reg['tipo'] = 'docente'){
+			header("Location: index.php");
+		}		
 	}
 
 } ?>
