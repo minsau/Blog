@@ -51,3 +51,23 @@
 	margin: auto;
 	background-color: #286090;
 }
+
+
+#div-login{
+	border: 0px solid #000000;
+	padding:10px;
+	border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+-webkit-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
+box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
