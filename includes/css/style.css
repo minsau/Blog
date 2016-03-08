@@ -42,7 +42,8 @@
 	max-width: 38%;
 	border-radius: 10px;
 	margin: auto;
-	background-color: #A9F5F2;
+	border: solid 1px;
+	background-color: white;
 }
 
 #usuario-container{
@@ -67,7 +68,17 @@ box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
-
   display: flex;
   align-items: center;
+}
+input {
+  display: inline-block;
+  float: center;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 20%;
+    text-align: justify-all;
 }
