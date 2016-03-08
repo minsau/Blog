@@ -38,6 +38,13 @@
 	background-color: #A9F5F2;
 }
 
+#registro-container{
+	max-width: 38%;
+	border-radius: 10px;
+	margin: auto;
+	background-color: #A9F5F2;
+}
+
 #usuario-container{
 	max-width: 100%;
 	border-radius: 5px;
