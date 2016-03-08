@@ -16,16 +16,35 @@
 	-webkit-box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.75);
 	-moz-box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.75);
 	box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.75);
-	cursor: pointer;
+	
 }
 
 .entries #title{
-
+	background-color: #2ECCFA;
+	border-radius: 5px;
+	width: 90%;
+	min-height: 50%;
+	margin-top: 15px;
+	margin-left: 5%;
 }
 
+.entries #title:hover{
+   background-color: #2ECCFA;
+   border-radius: 5px;
+   width: 90%;
+   margin-top: 10px;
+   margin-left: 5%;
+	
+}
 
 .entries #body{
-
+   background-color: #A9F5F2;
+   border-radius: 10px;
+   min-width: 90%;
+	min-height: 20%;
+	max-width: 90%;
+	max-height: 20%;
+	margin-left: 8%;
 }
 
 #entradas-container{
