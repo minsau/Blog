@@ -5,16 +5,16 @@
 
 
 .entries #title{
-	background-color: red;
-	border: solid 3px;
+	background-color: #A9F5F2;
+	border: solid 0px;
 	width: 90%;
 	margin-top: 10px;
 	margin-left: 5%;
 }
 
 .entries #title:hover{
-   background-color: orange;
-   border: solid 3px;
+   background-color: #2ECCFA;
+   border-radius: 5px;
    width: 90%;
    margin-top: 10px;
    margin-left: 5%;
@@ -22,8 +22,8 @@
 }
 
 .entries #body{
-   background-color: blue;
-   border: solid 3px;
+   background-color: white;
+   border-radius: 15px;
    min-width: 90%;
 	min-height: 20%;
 	max-width: 90%;
@@ -31,11 +31,16 @@
 	margin-left: 5%;
 }
 
-
 #entradas-container{
-	max-width: 60%;
-	border: solid 3px;
+	max-width: 65%;
+	border-radius: 17px;
 	margin: auto;
-	background-color: gray;
+	background-color: #A9F5F2;
 }
 
+#usuario-container{
+	max-width: 100%;
+	border-radius: 5px;
+	margin: auto;
+	background-color: #286090;
+}
