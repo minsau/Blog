@@ -1,4 +1,5 @@
 <?php
+session_start();
 	if(!$_POST){	
 ?>
 <!DOCTYPE html>
@@ -26,13 +27,21 @@
 </body>
 </html>
 <?php }else{
-	$correo = $_POST['correo'];
-	$password = $_POST['pass'];
-	//echo "$correo <br> $password";
+	
 	require_once("includes/conexion.php");
-
-	$sql = "SELECT * FROM Usuario WHERE correo = '$correo'";
-	//$res = mysql_query($sql,$con);
-	$res = mysqli_query($con,$sql) or die("Error consultando correo"); 
+	$correo = $_POST['correo'];
+	$password = md5($_POST['pass']);
+	//echo "$correo <br> $password";
+	//echo "<br>";
+	$sql = "SELECT * FROM Usuario WHERE correo = '$correo' AND password = '$password'";
+	//echo $sql;
+	$res = mysql_query($sql,$con) or die("Error consultando correo"); 
+	//echo mysql_num_rows($res);
+	if(mysql_num_rows($res) > 0){
+		$reg = mysql_fetch_array($res) or die("Error al convertir en registros");
+		$_SESSION['correo'] = $correo;
+		$_SESSION['tipo'] = $reg['tipo'];
+		$_SESSION['id'] = $reg['id_usuario'];	
+	}
 
 } ?>

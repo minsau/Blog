@@ -1,5 +1,5 @@
 <?php
-require_once("conexion.php");
+require_once("includes/conexion.php");
 $sql_pub = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog order by fecha_publicacion desc";
 $res_pub = mysql_query($sql_pub, $con);
 ?>
