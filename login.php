@@ -34,7 +34,7 @@ session_start();
 						<label> Contraseña:  </label> <input type="password" name="pass" id="pass" class="form-control" required>
 					</div>
 
-					<input type="submit" value="Ingresar" class="btn btn-primary">	 <a href="alumno.php?nuevo=1" style="float: rigth;"> Registrate </a>
+					<input type="submit" value="Ingresar" class="btn btn-primary">	 <a href="registro.php" style="float: rigth;"> Registrate </a>
 				</form>
 			</div>
 		</div>
