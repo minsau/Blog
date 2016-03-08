@@ -4,36 +4,32 @@
 }
 
 
-.entries #title{
-	background-color: #2ECCFA;
-	border-radius: 5px;
-	width: 90%;
-	min-height: 50%;
-	margin-top: 15px;
-	margin-left: 5%;
-}
 
-.entries #title:hover{
-   background-color: #2ECCFA;
-   border-radius: 5px;
-   width: 90%;
-   margin-top: 10px;
-   margin-left: 5%;
+.entries:hover{
+	padding: 10px;
+	border-radius: 11px 11px 11px 11px;
+	-moz-border-radius: 11px 11px 11px 11px;
+	-webkit-border-radius: 11px 11px 11px 11px;
+	max-width: 100%;
+	max-height: 10%;
+	border: 0px solid #000000;
+	-webkit-box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.75);
+	box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.75);
 	cursor: pointer;
 }
 
+.entries #title{
+
+}
+
+
 .entries #body{
-   background-color: #A9F5F2;
-   border-radius: 10px;
-   min-width: 90%;
-	min-height: 20%;
-	max-width: 90%;
-	max-height: 20%;
-	margin-left: 8%;
+
 }
 
 #entradas-container{
-	max-width: 65%;
+	max-width: 75%;
 	min-height: 80%;
 	border-radius: 17px;
 	margin: auto;
