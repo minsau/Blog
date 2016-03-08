@@ -66,23 +66,31 @@ $res_pub_u = mysql_query($sql_pub_u, $con);
 			</div>		
 
 			<div name="entradas-container" id="entradas-container">
-				<div class="entries" name="entrada1" id="entrada1">
+				
 					<a href="entradas.php"><label>[+] Agregar publicación</label></a>
 					<br>
 					<?php
 					while($reg_pub = mysql_fetch_array($res_pub)){
 					?>
-					<div id="title" ><h4> <?php echo $reg_pub['tema']." - ".$reg_pub['titulo']; ?> </h4> </div>
-					<br>
-					<div id="body"> <p> <?php echo $reg_pub['contenido']; ?> </p>
-					<br>
-					<font size="2"> <p> <?php echo $reg_pub['fecha_publicacion']; ?> </p></font>
+					<div class="panel panel-info" name="<?php echo "entrada".$reg_pub['id_entrada']; ?>" id="<?php echo "entrada".$reg_pub['id_entrada']; ?>">
+						<div  class="panel-heading" id="title" ><strong><h4 class="panel-title"> <?php echo $reg_pub['tema']." - ".$reg_pub['titulo']; ?> </h4> </strong> </div>
+						<br>
+						<div class="panel-body" id="body"> <p> <?php echo $reg_pub['contenido']; ?> </p>
+						<br>
+						<font size="2"> <p> <?php echo $reg_pub['fecha_publicacion']; ?> </p></font>
+						</div>
 					</div>
-
 					<?php
 					}
 					?>
+<<<<<<< HEAD
 				</div>
+=======
+				
+            </div> 
+		
+			</div>
+>>>>>>> be64682c348385afeacec9f1349ec679e51aca67
 
    		</div>
 	</body>
