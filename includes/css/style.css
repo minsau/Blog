@@ -19,44 +19,17 @@
 	
 }
 
-.entries #title{
-	background-color: #2ECCFA;
-	border-radius: 5px;
-	width: 90%;
-	min-height: 50%;
-	margin-top: 15px;
-	margin-left: 5%;
-}
-
-.entries #title:hover{
-   background-color: #2ECCFA;
-   border-radius: 5px;
-   width: 90%;
-   margin-top: 10px;
-   margin-left: 5%;
-	
-}
-
-.entries #body{
-   background-color: #A9F5F2;
-   border-radius: 10px;
-   min-width: 90%;
-	min-height: 20%;
-	max-width: 90%;
-	max-height: 20%;
-	margin-left: 8%;
-}
 
 #entradas-container{
-<<<<<<< HEAD
-	max-width: 63%;
-=======
-	max-width: 75%;
->>>>>>> be64682c348385afeacec9f1349ec679e51aca67
+	left: 24%;
+	min-width: 68%;
 	min-height: 80%;
+	max-width: 68%;
+	max-height: 80%;
 	border-radius: 17px;
 	margin: auto;
 	background-color: white;
+	position:absolute;
 }
 
 #registro-container{
@@ -70,7 +43,7 @@
 #usuario-container{
 	max-width: 100%;
 	border-radius: 5px;
-	margin: auto;
+
 	background-color: #286090;
 }
 

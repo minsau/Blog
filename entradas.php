@@ -19,7 +19,7 @@
 	if($_SESSION){
 		require_once("includes/conexion.php");
 	$id_usuario = $_SESSION['id'];
-	$id_blog = 1;
+	$id_blog = $_GET['id_blog'];
 	if(!$_POST){
  ?>
 <div class="container " >

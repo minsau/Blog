@@ -2,6 +2,7 @@
 session_start();
 require_once("includes/conexion.php");
 
+if($_SESSION){
 $id_usuario = $_SESSION['id'];
 $sql_usuario = "select * from Usuario where id_usuario = $id_usuario";
 $res_usuario = mysql_query($sql_usuario, $con);
@@ -16,6 +17,7 @@ $res_blog = mysql_query($sql_blog, $con);
 $sql_pub_u = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog and order by fecha_publicacion desc"; 
 $res_pub_u = mysql_query($sql_pub_u, $con);
 
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,69 +31,117 @@ $res_pub_u = mysql_query($sql_pub_u, $con);
 	
 	<body>
 		<div class="container">
+			
+			<?php if(!$_SESSION){ ?>
+				<div name="usuario-container" id="usuario-container"> 
+					<font color="white"><h2 align="center" > Bienvenido(a), por favor registrate ?></h2> 
+						<p align="right"> <a href="login.php"> Iniciar sesión </a></p>
+					</font>
+				</div>	
+
+			<?php } else {?>
 			<div name="usuario-container" id="usuario-container"> 
 				<font color="white"><h2 align="center" > Bienvenido(a) <?php echo $reg_usuario['alias']; ?></h2> 
-					<p align="right"> <a href="login.php"> Iniciar sesión </a></p>
+					<p align="right"> <a href="logout.php"> Salir </a></p>
 				</font>
 			</div>	
 
+			<?php } ?>
 
-<a href="#miModal">Abrir Modal</a>
-<div id="miModal" class="modal">
-  <div class="modal-contenido">
-    <a href="#">X</a>
-    <form action="#" id="nuevo_blog" method="post">
-			<h3 align="center" name="usuario-container" id="usuario-container"><font color="white"> Nuevo Blog</font></h3>
-			<br>
-			<div class="registro-container">
-			<label for="titulo">Titulo: </label><input type="text" name="titulo" id="titulo" placeholder="Ingresa un titulo" required><br>
-			<label for="descripcion">Descripcion: </label><input type="text" name="apellidos" id="apellidos" placeholder="Ingresa una descripción del blog" required><br>
-			<input type="submit" class="btn btn-primary" value="Guardar blog">
-			</div>
-		</form>
-  </div>  
-</div>
+		<?php 
+			if(!$_POST){
+		 ?>
+			<div class="modal fade" id="nuevo-blog" >
+				<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h2 class="modal-title"> Datos Personales </h2> 
+										<a class="btn btn-warning" id="cerrar">X</a>
+									</div>
+									<div class="modal-body">
+								<form action="#" method="post">
+									<label for="titulo">Titulo: </label><input type="text" name="titulo" id="titulo" placeholder="Ingresa un titulo" required><br>
+									<label for="descripcion">Descripcion: </label><input type="text" name="descripcion" id="descripcion" placeholder="Ingresa una descripción del blog" required><br>
+									<input type="submit" class="btn btn-primary" value="Guardar blog">
+								</form>		
+									</div>
+
+									<div class="modal-footer">
+										<!--<a href="#infoPersonal" class="btn btn-primary btn-lg" data-toggle="modal" id="next1"> Mostrar </a>-->
+                                                                                
+										
+									</div>
+								</div>
+				</div>
+			</div>	
+
+	<?php
+		} else {
+				require_once("includes/conexion.php");
+				$titulo = $_POST['titulo'];
+				$descripcion = $_POST['descripcion'];
+				$sql = "insert into Blog values (null,'$titulo','$descripcion',now(),$id_usuario)";
+				$res = mysql_query($sql, $con);
+			}
+	?>
 
 			<div align="left">
 				<h3>Mis Blogs</h3>
-				<a href=""><label>[+] Agregar blog</label></a>
+				<a id="abrir-modal">[+] Agregar blog</a>
 				<br>
 				<?php
 					while($reg_blog = mysql_fetch_array($res_blog)){
 					?>
 					<label> <a href=""> <?php echo $reg_blog['titulo']; ?> </a> </label>
-					<?php
+					<label> <a href="entradas.php?id_blog=<?php echo $reg_blog['id_blog']; ?>"> [+] Agregar publicación </a> </label>
+					<?php 
+						while ($reg_pub = mysql_fetch_array($res_pub)) {
+						?>
+					<label> <?php echo $reg_pub['tema']; ?> </label>
+						<?php
+						}
 					}
 					?>
 			</div>		
-
+			
 			<div name="entradas-container" id="entradas-container">
+				<div class="" name="nuevo-blog" id="div-nuevo-blog" style="display: none;">
+								<form action="#" method="post">
+									<label for="titulo">Titulo: </label><input type="text" name="titulo" id="titulo" placeholder="Ingresa un titulo" required><br>
+									<label for="descripcion">Descripcion: </label><input type="text" name="descripcion" id="descripcion" placeholder="Ingresa una descripción del blog" required><br>
+									<input type="submit" class="btn btn-primary" value="Guardar blog">
+								</form>		
+									</div>
 				
-					<a href="entradas.php"><label>[+] Agregar publicación</label></a>
-					<br>
 					<?php
-					while($reg_pub = mysql_fetch_array($res_pub)){
+					$sql_p = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog order by fecha_publicacion desc"; 
+					$res_p = mysql_query($sql_p, $con);
+					while($reg_p = mysql_fetch_array($res_p)){
 					?>
 					<div class="panel panel-info" name="<?php echo "entrada".$reg_pub['id_entrada']; ?>" id="<?php echo "entrada".$reg_pub['id_entrada']; ?>">
-						<div  class="panel-heading" id="title" ><strong><h4 class="panel-title"> <?php echo $reg_pub['tema']." - ".$reg_pub['titulo']; ?> </h4> </strong> </div>
+						<div  class="panel-heading" id="title" ><strong><h4 class="panel-title"> <?php echo $reg_p['tema']." - ".$reg_p['titulo']; ?> </h4> </strong> </div>
 						<br>
-						<div class="panel-body" id="body"> <p> <?php echo $reg_pub['contenido']; ?> </p>
+						<div class="panel-body" id="body"> <p> <?php echo $reg_p['contenido']; ?> </p>
 						<br>
-						<font size="2"> <p> <?php echo $reg_pub['fecha_publicacion']; ?> </p></font>
+						<font size="2"> <p> <?php echo $reg_p['fecha_publicacion']; ?> </p></font>
 						</div>
 					</div>
 					<?php
 					}
 					?>
-<<<<<<< HEAD
-				</div>
-=======
-				
-            </div> 
-		
-			</div>
->>>>>>> be64682c348385afeacec9f1349ec679e51aca67
 
-   		</div>
+			<script type="text/javascript" src="includes/js/jquery.js"></script>
+			<script type="text/javascript" src="includes/js/bootstrap.js"></script>
+
+			<script type="text/javascript">
+				$('#abrir-modal').click(function(){
+                   $('#div-nuevo-blog').show();				
+				});
+
+				$('#cerrar').click(function(){
+                    $('#nuevo-blog').modal('hide');					
+				});
+
+			</script>
 	</body>
 </html>
