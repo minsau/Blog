@@ -6,6 +6,7 @@ session_start();
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="includes/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="includes/css/style.css">
 	<title>Inicia Sesión</title>
@@ -27,11 +28,11 @@ session_start();
 			<div class="col-lg-6 col-lg-offset-3 " name="formulario" id="div-login">
 				<form action="#" id="form-login" method="post" role="form">
 					<div class="form-group">
-						<label> Correo: </label> <input type="email" name="correo" id="correo" class="form-control" required>
+						<label for="correo"> Correo: </label> <input type="email" name="correo" id="correo" class="form-control" required>
 					</div>	
 
 					<div class="form-group">
-						<label> Contraseña:  </label> <input type="password" name="pass" id="pass" class="form-control" required>
+						<label for="pass"> Contraseña:  </label> <input type="password" name="pass" id="pass" class="form-control" required>
 					</div>
 
 					<input type="submit" value="Ingresar" class="btn btn-primary">	 <a href="registro.php" style="float: rigth;"> Registrate </a>
@@ -39,6 +40,7 @@ session_start();
 			</div>
 		</div>
 	</div>
+
 
 
 
@@ -67,6 +69,8 @@ session_start();
 		if($reg['tipo'] = 'usuario'){
 			header("Location: index.php");
 		}		
+	}else{
+		echo "Usuario no encontrado";
 	}
 
 } ?>

@@ -11,13 +11,18 @@ $reg_usuario = mysql_fetch_array($res_usuario);
 $sql_pub = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog order by fecha_publicacion desc"; 
 $res_pub = mysql_query($sql_pub, $con);
 
-$sql_blog = "select * from Usuario as u, Blog as b where u.id_usuario = b.id_usuario";
-$res_blog = mysql_query($sql_blog, $con);
 
 $sql_pub_u = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog and order by fecha_publicacion desc"; 
 $res_pub_u = mysql_query($sql_pub_u, $con);
 
 }
+
+$sql_blog = "select * from Usuario as u, Blog as b where u.id_usuario = b.id_usuario";
+$res_blog = mysql_query($sql_blog, $con);
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +39,7 @@ $res_pub_u = mysql_query($sql_pub_u, $con);
 			
 			<?php if(!$_SESSION){ ?>
 				<div name="usuario-container" id="usuario-container"> 
-					<font color="white"><h2 align="center" > Bienvenido(a), por favor registrate ?></h2> 
+					<font color="white"><h2 align="center" > Bienvenido(a), por favor registrate.</h2> 
 						<p align="right"> <a href="login.php"> Iniciar sesión </a></p>
 					</font>
 				</div>	
@@ -85,7 +90,7 @@ $res_pub_u = mysql_query($sql_pub_u, $con);
 			}
 	?>
 
-			<div align="left">
+			<div align="left" id="menu-blogs">
 				<h3>Mis Blogs</h3>
 				<a id="abrir-modal">[+] Agregar blog</a>
 				<br>
@@ -105,13 +110,13 @@ $res_pub_u = mysql_query($sql_pub_u, $con);
 			</div>		
 			
 			<div name="entradas-container" id="entradas-container">
-				<div class="" name="nuevo-blog" id="div-nuevo-blog" style="display: none;">
-								<form action="#" method="post">
-									<label for="titulo">Titulo: </label><input type="text" name="titulo" id="titulo" placeholder="Ingresa un titulo" required><br>
-									<label for="descripcion">Descripcion: </label><input type="text" name="descripcion" id="descripcion" placeholder="Ingresa una descripción del blog" required><br>
-									<input type="submit" class="btn btn-primary" value="Guardar blog">
-								</form>		
-									</div>
+				<div class="form-inline" name="nuevo-blog" id="div-nuevo-blog" style="display: none;">
+					<form action="#" method="post">
+						<div class="form-group"> <label for="titulo">Titulo: </label><input type="text" name="titulo" id="titulo" placeholder="Ingresa un titulo" class = "form-control" required><br></div>
+						<div class="form-group"> <label for="descripcion">Descripcion: </label><input type="text" name="descripcion" id="descripcion" placeholder="Ingresa una descripción del blog" class = "form-control" required><br></div>
+						<input type="submit" class="btn btn-primary" value="Guardar blog">
+					</form>		
+				</div>
 				
 					<?php
 					$sql_p = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog order by fecha_publicacion desc"; 

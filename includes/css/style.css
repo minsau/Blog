@@ -3,6 +3,25 @@
 	padding: 0px;
 }
 
+/*input {
+  display: inline-block;
+  float: center;
+}
+
+#menu-blogs{
+	max-width: 22%;
+	min-width: 22%;
+}*/
+
+
+#menu-blogs label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 20%;
+    text-align: justify-all;
+}
+
 
 
 .entries:hover{
@@ -27,7 +46,7 @@
 	max-width: 68%;
 	max-height: 80%;
 	border-radius: 17px;
-	margin: auto;
+	
 	background-color: white;
 	position:absolute;
 }
@@ -52,12 +71,14 @@
 	border: 0px solid #000000;
 	padding:10px;
 	border-radius: 10px 10px 10px 10px;
--moz-border-radius: 10px 10px 10px 10px;
--webkit-border-radius: 10px 10px 10px 10px;
--webkit-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
--moz-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-webkit-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
+	box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
 }
+
+
 
 #div-entrada{
 	border: 0px solid #000000;
@@ -74,40 +95,9 @@ box-shadow: 6px 7px 11px -4px rgba(0,0,0,0.75);
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
+
   display: flex;
   align-items: center;
 }
-input {
-  display: inline-block;
-  float: center;
-}
-label{
-    display: inline-block;
-    float: left;
-    clear: left;
-    width: 20%;
-    text-align: justify-all;
-}
 
-.modal-contenido{
-  background-color:aqua;
-  width:300px;
-  padding: 10px 20px;
-  margin: 20% auto;
-  position: relative;
-}
-.modal{
-  background-color: rgba(0,0,0,.8);
-  position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  opacity:0;
-  pointer-events:none;
-  transition: all 1s;
-}
-#miModal:target{
-  opacity:1;
-  pointer-events:auto;
-}
+
