@@ -2123,7 +2123,8 @@ pre code {
     width: 33.33333333%;
   }
   .col-lg-3 {
-    width: 25%;
+    margin-left: 11px;
+    width: 24%;
   }
   .col-lg-2 {
     width: 16.66666667%;
@@ -5462,6 +5463,7 @@ button.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
+  width: 100%;
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;

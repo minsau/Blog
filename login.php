@@ -10,22 +10,17 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="includes/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="includes/css/style.css">
 	<title>Inicia Sesión</title>
+			<link rel="stylesheet" type="text/css" href="includes/css/estiloheader.css">
+			<link rel="stylesheet" type="text/css" href="includes/fonts.css">
+			<script src="includes/js/jquery.js"></script>
+			<script src="includes/js/main.js"></script>
 </head>
 <body>
+	<?php require_once("header.php"); ?>
 	
-	<!--<div class="container">
-		<div id="div-login" class="vertical-center">
-			<form action="#" id="iniciar-sesion" method="post">
-				<label for="correo">Correo: </label><input type="email" name="correo" id="correo" placeholder="Ingresa tu correo">
-				<label for="pass">Contraseña: </label><input type="password" name="pass" id="pass" placeholder="Ingresa tu contraseña">
-				<input type="submit" class="btn btn-primary" value="Ingresar">
-			</form>
-		</div>
-	</div>-->
-
 	<div class="container " >
-		<div class="row vertical-center ">
-			<div class="col-lg-6 col-lg-offset-3 " name="formulario" id="div-login">
+		<div class="row">
+			<div class="col-sm-10" name="formulario" id="div-login">
 				<form action="#" id="form-login" method="post" role="form">
 					<div class="form-group">
 						<label for="correo"> Correo: </label> <input type="email" name="correo" id="correo" class="form-control" required>
@@ -44,7 +39,7 @@ session_start();
 
 
 
-	<script type="text/javascript" src="includes/js/jquery.js"></script>
+	
 	<script type="text/javascript" src="includes/js/bootstrap.js"></script>
 	
 </body>
@@ -54,7 +49,7 @@ session_start();
 	require_once("includes/conexion.php");
 	$correo = $_POST['correo'];
 	$password = md5($_POST['pass']);
-	//echo "$correo <br> $password";
+	echo "$correo <br> $password";
 	//echo "<br>";
 	$sql = "SELECT * FROM Usuario WHERE correo = '$correo' AND password = '$password'";
 	//echo $sql;
