@@ -80,7 +80,7 @@ $res_blog = mysql_query($sql_blog, $con);
 					?>
 					<div class="panel panel-info col-lg-9 col-sm-9 entrada" name="<?php echo "entrada".$reg_pub['id_entrada']; ?>" id="<?php echo "entrada".$reg_pub['id_entrada']; ?>">
 						<div  class="panel-heading" id="title" >
-							<strong><h4 class="panel-title"> <?php echo $reg_p['tema']." - ".$reg_p['titulo']; ?> </h4> </strong>
+							<a href="describePublicacion.php?id_publicacion=<?php echo $reg_p['id_publicacion'];?>"><strong><h4 class="panel-title"> <?php echo $reg_p['tema']." - ".$reg_p['titulo']; ?> </h4> </strong></a>
 						</div>
 						<div class="panel-body" id="body">
 							<p> <?php echo $reg_p['contenido']; ?> </p>											
