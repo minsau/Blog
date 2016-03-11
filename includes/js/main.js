@@ -22,3 +22,8 @@ function main (){
 		$(this).children('.children').slideToggle();
 	});
 }
+
+
+				$('#nuevo-blog-btn').click(function(){
+					$('#div-nuevo-blog').show();
+				});

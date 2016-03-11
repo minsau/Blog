@@ -39,7 +39,7 @@
 
 
 #div-entrada{
-	background: red;
+
 	border: 0px solid #000000;
 	padding:10px;
 	border-radius: 10px 10px 10px 10px;
@@ -105,7 +105,9 @@
 	border: solid 1px;
 	background-color: white;
 }
-
+#contenido-publicacion{
+	display: none;
+}
 #usuario-container{
 	max-width: 100%;
 	border-radius: 5px;

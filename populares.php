@@ -2,27 +2,7 @@
 session_start();
 require_once("includes/conexion.php");
 require_once("functions.php");
-
-if($_SESSION){
-$id_usuario = $_SESSION['id'];
-$sql_usuario = "select * from Usuario where id_usuario = $id_usuario";
-$res_usuario = mysql_query($sql_usuario, $con);
-$reg_usuario = mysql_fetch_array($res_usuario);
-
-$sql_pub = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog order by fecha_publicacion desc"; 
-$res_pub = mysql_query($sql_pub, $con);
-
-
-$sql_pub_u = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog and order by fecha_publicacion desc"; 
-$res_pub_u = mysql_query($sql_pub_u, $con);
-
-}
-
-$sql_blog = "select * from Usuario as u, Blog as b where u.id_usuario = b.id_usuario";
-$res_blog = mysql_query($sql_blog, $con);
-
-
-
+$id_blog = $_GET['id_blog'];
 
 ?>
 
@@ -46,11 +26,35 @@ $res_blog = mysql_query($sql_blog, $con);
 		<?php require_once("header.php"); ?>
 
 		<div class="container">
+
+		<?php 
+			if(!$_POST){
+		 ?>
+		<?php
+		} else {
+				require_once("includes/conexion.php");
+				$titulo = $_POST['titulo'];
+				$descripcion = $_POST['descripcion'];
+				$sql = "insert into Blog values (null,'$titulo','$descripcion',now(),$id_usuario)";
+				$res = mysql_query($sql, $con);
+			}
+	?>
+
+	
+			
+			<!--<div name="entradas-container" id="entradas-container">-->
+				<div class="form-inline" name="nuevo-blog" id="div-nuevo-blog" style="display: none;">
+					<form action="#" method="post">
+						<div class="form-group"> <label for="titulo">Titulo: </label><input type="text" name="titulo" id="titulo" placeholder="Ingresa un titulo" class = "form-control" required><br></div>
+						<div class="form-group"> <label for="descripcion">Descripcion: </label><input type="text" name="descripcion" id="descripcion" placeholder="Ingresa una descripción del blog" class = "form-control" required><br></div>
+						<input type="submit" class="btn btn-primary" value="Guardar blog">
+					</form>		
+				</div>
 				
 				<div class="row">
 					<?php
-					$sql_p = "select * from Blog as b, Publicacion as p where p.id_blog = b.id_blog order by fecha_publicacion desc"; 
-					$res_p = mysql_query($sql_p, $con);
+					$sql_p = "select * from Blog as b, Publicacion as p where p.id_blog = '$id_blog' order by p.visitas desc"; 
+					$res_p = mysql_query($sql_p, $con) or die("Error obteniendo las entradas del blog".mysql_error());
 					$contador = 0;
 					while($reg_p = mysql_fetch_array($res_p)){
 					?>
@@ -63,7 +67,7 @@ $res_blog = mysql_query($sql_blog, $con);
 							<div id="contenido-publicacion"><p> <?php echo $reg_p['contenido']; ?> </p>	</div>
 						</div>
 						<div class="panel-footer">
-							<font size="2"> <p> <?php echo formatearFecha($reg_p['fecha_publicacion']); ?> </p></font>
+							<font size="2"> <p> <?php echo formatearFecha($reg_p['fecha_publicacion']); ?>  <span style="float: right;">Visitas <?php echo $reg_p['visitas']; ?> </span> </p></font>
 						</div>
 					</div>
 						<?php if($contador == 0 && !$_SESSION){ ?>
@@ -97,17 +101,5 @@ $res_blog = mysql_query($sql_blog, $con);
 				</div>
 			
 			<script type="text/javascript" src="includes/js/bootstrap.js"></script>
-			
-
-			<script type="text/javascript">
-				$('#abrir-modal').click(function(){
-                   $('#div-nuevo-blog').show();				
-				});
-
-				$('#cerrar').click(function(){
-                    $('#nuevo-blog').modal('hide');					
-				});
-
-			</script>
 	</body>
 </html>

@@ -46,7 +46,15 @@ $res_blog = mysql_query($sql_blog, $con);
 	
 	<body>
 
-		<?php require_once("header.php"); ?>
+		<?php require_once("header.php");
+		$id_blog = $_GET['id_blog'];
+		$sqlv = "UPDATE Blog set visitas = (visitas + 1) where id_blog = $id_blog";
+		$resv = mysql_query($sqlv,$con) or die("Error actualizando las visitas");
+
+		$sqlv = "UPDATE Publicacion set visitas = (visitas + 1) where id_publicacion = $id_publicacion";
+		$resv = mysql_query($sqlv,$con) or die("Error actualizando las visitas");
+
+		 ?>
 
 		<div class="container">
 
@@ -95,9 +103,32 @@ $res_blog = mysql_query($sql_blog, $con);
 						<div class="panel-footer">
 							<font size="2"> <p> <?php echo $reg_publicacion['fecha_publicacion']; ?> </p></font>
 						</div>
-
-
 					</div>
+
+										<?php if($contador == 0 && !$_SESSION){ ?>
+					<div class="col-lg-3" name="formulario" id="div-login-index">
+						<form action="login.php" id="form-login" method="post" role="form">
+							<div class="form-group">
+								<label for="correo"> Correo: </label> <input type="email" name="correo" id="correo" class="form-control" required>
+							</div>	
+
+							<div class="form-group">
+								<label for="pass"> Contraseña:  </label> <input type="password" name="pass" id="pass" class="form-control" required>
+							</div>
+
+							<input type="submit" value="Ingresar" class="btn btn-primary">	 <a href="registro.php" style="float: rigth;"> Registrate </a>
+						</form>
+					</div>
+					<?php
+							$contador++;
+						}
+
+						if($contador == 0 && $_SESSION){
+							require_once("panel.php");
+						$contador++;
+						}
+					}
+					?>
 					<div class="panel panel-info col-lg-9 col-sm-9 entrada">
 						<div  class="panel-heading" id="title" >
 							<strong><h4 class="panel-title"> C O M E N T A R I O S</h4> </strong>
@@ -130,39 +161,8 @@ $res_blog = mysql_query($sql_blog, $con);
 						</div>
 					</div>
 
+					<?php } ?>
 
-						<?php } if($contador == 0 && !$_SESSION){ ?>
-					<div class="col-lg-3" name="formulario" id="div-login-index">
-						<form action="login.php" id="form-login" method="post" role="form">
-							<div class="form-group">
-								<label for="correo"> Correo: </label> <input type="email" name="correo" id="correo" class="form-control" required>
-							</div>	
-
-							<div class="form-group">
-								<label for="pass"> Contraseña:  </label> <input type="password" name="pass" id="pass" class="form-control" required>
-							</div>
-
-							<input type="submit" value="Ingresar" class="btn btn-primary">	 <a href="registro.php" style="float: rigth;"> Registrate </a>
-						</form>
-					</div>
-					<?php
-							$contador++;
-						}
-
-						if($contador == 0 && $_SESSION){
-					?>
-						<div class="panel panel-default col-lg-3 entrada" name="panel-creador" id="panel-creador">
-						<div  class="panel-heading" id="title" ><strong>Herramientas de creador</h4> </strong> </div>
-						<br>
-						<div class="panel-body" id="body">
-							Aqui iran las herramientas
-						</div>
-					</div>
-					<?php
-						$contador++;
-						}
-					}
-					?>
 
 
 					
