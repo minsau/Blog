@@ -82,7 +82,7 @@
 		$tema = $_POST['tema'];
 		$contenido = $_POST['contenido'];
 
-		$sql = "INSERT INTO Publicacion values (null,'$tema','$contenido',now(),'$id_blog')";
+		$sql = "INSERT INTO Publicacion values (null,'$tema','$contenido',now(),'$id_blog',null)";
 		$res = mysql_query($sql,$con) or die("Error al guardar la entrada".mysql_error());
 
 
