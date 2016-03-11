@@ -1,0 +1,25 @@
+			<div align="left" id="menu-blogs">
+				<h3>Mis Blogs</h3>
+				<a id="abrir-modal">[+] Agregar blog</a>
+				<br>
+				<?php
+					while($reg_blog = mysql_fetch_array($res_blog)){
+					?>
+					<label> <a href=""> <?php echo $reg_blog['titulo']; ?> </a> </label>
+					<label> <a href="entradas.php?id_blog=<?php echo $reg_blog['id_blog']; ?>"> [+] Agregar publicación </a> </label>
+					<?php 
+						while ($reg_pub = mysql_fetch_array($res_pub)) {
+						?>
+					<label> <?php echo $reg_pub['tema']; ?> </label>
+						<?php
+						}
+					}
+					?>
+			</div>	
+
+
+
+
+
+
+			

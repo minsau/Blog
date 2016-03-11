@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("includes/conexion.php");
+require_once("functions.php");
 
 if($_SESSION){
 $id_usuario = $_SESSION['id'];
@@ -85,7 +86,7 @@ $res_blog = mysql_query($sql_blog, $con);
 							<p> <?php echo $reg_p['contenido']; ?> </p>											
 						</div>
 						<div class="panel-footer">
-							<font size="2"> <p> <?php echo $reg_p['fecha_publicacion']; ?> </p></font>
+							<font size="2"> <p> <?php echo formatearFecha($reg_p['fecha_publicacion']); ?> </p></font>
 						</div>
 					</div>
 						<?php if($contador == 0 && !$_SESSION){ ?>
