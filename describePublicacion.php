@@ -87,6 +87,9 @@ $res_blog = mysql_query($sql_blog, $con);
 							<strong><h4 class="panel-title"> <?php echo $reg_publicacion['tema']; ?> </h4> </strong>
 						</div>
 						<div class="panel-body" id="body">
+							<p> <?php echo $reg_publicacion['descripcion']; ?> </p>											
+						</div>
+						<div class="panel-body" id="body">
 							<p> <?php echo $reg_publicacion['contenido']; ?> </p>											
 						</div>
 						<div class="panel-footer">
