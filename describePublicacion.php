@@ -21,7 +21,7 @@ $res_pub_u = mysql_query($sql_pub_u, $con);
 	$sql_publicacion = "select * from Publicacion where id_publicacion = $id_publicacion";
 	$res_publicacion = mysql_query($sql_publicacion, $con);
 
-	$sql_comentario = "select * from Usuario as u, Publicacion as p, Comentario as c where p.id_publicacion = c.id_publicacion and c.id_publicacion = $id_publicacion and p.id_publicacion = $id_publicacion and c.id_usuario = u.id_usuario";
+	$sql_comentario = "select * from Usuario as u, Publicacion as p, Comentario as c where p.id_publicacion = c.id_publicacion and c.id_publicacion = $id_publicacion and p.id_publicacion = $id_publicacion and c.id_usuario = u.id_usuario order by fecha_comentario desc";
 	$res_comentario = mysql_query($sql_comentario, $con);
 
 $sql_blog = "select * from Usuario as u, Blog as b where u.id_usuario = b.id_usuario";
@@ -100,9 +100,22 @@ $res_blog = mysql_query($sql_blog, $con);
 							<strong><h4 class="panel-title"> C O M E N T A R I O S</h4> </strong>
 						</div>
 					</div>
-
-
-					<?php  
+					<?php if($_SESSION) {
+						?>
+					<div class="panel panel-info col-lg-9 col-sm-9 entrada">
+						<div class="panel-body" id="body">
+							<form action="nuevoComentario.php" id="form-login" method="post" role="form">
+								<div class="panel-body" id="body">
+									<input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $id_usuario; ?>"></input>
+									<input type="hidden" name="id_publicacion" id="id_publicacion" value="<?php echo $id_publicacion; ?>"></input>
+									<input type="text" name="comentario" id="comentario" class="form-control" required>
+								</div>
+							<h5 align="right"><input type="submit" value="Comentar" class="btn btn-primary">	 </h5>
+							</form>	
+						</div>
+						</div>					
+					<?php 
+					} 
 					while($reg_comentario = mysql_fetch_array($res_comentario)){
 					?>
 					<div class="panel panel-info col-lg-9 col-sm-9 entrada">
